@@ -1,5 +1,6 @@
 ## Script này do tôi tạo ra để dán vào discord PTB
 ## Tập lệnh Đa dạng Trò chơi (Game Variety Script)
+## [🔗 link tải Discord PTB](https://ptb.discord.com/)
 ![GameVariety](https://support.discord.com/hc/article_attachments/44370063946391)
 ```
 const cache = {};

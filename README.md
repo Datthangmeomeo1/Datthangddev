@@ -424,11 +424,38 @@ api.post({url: "/hypesquad/online",body:{house_id: 1}})
 
 **Tính năng xóa không còn hoạt động:** Bạn không thể xóa huy hiệu bằng phương pháp này được nữa. Có lẽ Discord đã loại bỏ cách xóa huy hiệu này vì hiện tại họ đã cung cấp sẵn tính năng ẩn huy hiệu ngay trong ứng dụng. Suy cho cùng, tại sao phải xóa huy hiệu trong khi bạn chỉ cần ẩn nó đi là được?
 
-## Tập lệnh LastMeadow (Đã ngừng hoạt động / Sự kiện đã kết thúc)
+## Tập lệnh LastMeadow (Đã ngừng hoạt động / Sự kiện đã kết thúc) - (mặc dù thì vẫn ra cho mọi người)
 
 ![LastMeadow](https://support.discord.com/hc/article_attachments/44370048477207)
 
 ```
-
+let wpRequire = window.webpackChunkdiscord_app.push([[Symbol()], {}, r => r]);
+const findModule = (filter) => {
+    for (let i in wpRequire.c) {
+        let m = wpRequire.c[i].exports;
+        if (!m) continue;
+        if (filter(m)) return m;
+        if (m.default && filter(m.default)) return m.default;
+        for (let j in m) {
+            if (m[j] && filter(m[j])) return m[j];
+        }
+    }
+};
+const startActivity = findModule(m => typeof m === 'function' && m.toString().includes('"GORILLA_START_ACTIVITY_SUCCESS"'));
+const completeActivity = findModule(m => typeof m === 'function' && m.toString().includes('"GORILLA_COMPLETE_ACTIVITY_SUCCESS"'));
+const sleep = async ms => await new Promise(r => setTimeout(r, ms));
+async function runActivityLoop(name, duration, cooldown) {
+  while (true) {
+    startActivity({ activity: name });
+    await sleep(duration);
+    completeActivity({ activity: name });
+    await sleep(cooldown);
+  }
+}
+runActivityLoop("gathering", 3000, 1000);
+await sleep(500);
+runActivityLoop("crafting", 5000, 128_000);
+await sleep(500);
+runActivityLoop("combat", 5000, 188_000);
 
 ```

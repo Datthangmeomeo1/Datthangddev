@@ -457,8 +457,8 @@ await sleep(500);
 runActivityLoop("crafting", 5000, 128_000);
 await sleep(500);
 runActivityLoop("combat", 5000, 188_000);
-
-## tool này sẽ giúp bạn lấy orb 
+```
+## tool này sẽ giúp bạn lấy orb  
 ```
 delete window.$;
 let wpRequire = webpackChunkdiscord_app.push([[Symbol()], {}, r => r]);
